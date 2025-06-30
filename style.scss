@@ -1,0 +1,289 @@
+:root {
+  --primary-col: #fcdec0;
+  --secondary-col: #381c0a;
+  --tri1-col: #feba17;
+  --tri2-col: #74512d;
+}
+
+@font-face {
+  font-family: aeonik;
+  font-weight: 200;
+  src: url(./fonts/AeonikTRIAL-Light.otf);
+}
+
+@font-face {
+  font-family: aeonik;
+  font-weight: 500;
+  src: url(./fonts/AeonikTRIAL-Regular.otf);
+}
+
+@font-face {
+  font-family: aeonik;
+  font-weight: 700;
+  src: url(./fonts/AeonikTRIAL-Bold.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--primary-col);
+  font-family: aeonik;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-col);
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: var(--tri1-col);
+}
+
+section.all-elems {
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  padding-top: 80px;
+  background-color: var(--tri2-col);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 2rem;
+  position: absolute;
+}
+
+.elem {
+  background-color: var(--tri1-col);
+  overflow: hidden;
+  width: 250px;
+  height: 50vh;
+  border-radius: 1rem;
+  font-size: 1.3rem;
+  transition: all ease-in 0.2;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    position: relative;
+    bottom: 15%;
+    left: 20%;
+  }
+
+  h3 {
+    position: relative;
+    bottom: 15%;
+    left: 20%;
+  }
+
+  &:active {
+    scale: 0.98;
+  }
+}
+
+.full-page {
+  height: 100%;
+  width: 100%;
+  background-color: var(--secondary-col);
+  padding: 40px;
+  display: none;
+  position: relative;
+
+  h1 {
+    font-size: 40px;
+  }
+}
+
+.mdi {
+  position: absolute;
+  right: 5%;
+  background-color: red;
+  border-radius: 50%;
+  padding: 0.5rem;
+  border: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:active {
+    scale: 0.95;
+  }
+}
+
+.to-do-fp {
+  .todo-container {
+    height: 70vh;
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .add-tasks {
+      height: 100%;
+      width: 40%;
+      background-color: var(--tri2-col);
+      border-radius: 1rem;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        align-items: flex-start;
+        gap: 2rem;
+
+        input,
+        textarea,
+        button {
+          width: 100%;
+          padding: 1rem;
+          font-size: 1.5rem;
+          background-color: var(--secondary-col);
+          border: none;
+          border-radius: 0.5rem;
+          outline: 0;
+        }
+        button {
+          font-weight: 500;
+          background-color: var(--tri1-col);
+          transition: all ease-in 0.2;
+
+          &:active {
+            scale: 0.95;
+          }
+        }
+        .mark-as-imp {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 100%;
+          gap: 2rem;
+
+          #checkbox {
+            width: fit-content;
+            scale: 2;
+          }
+
+          label {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .all-tasks {
+      height: 100%;
+      width: 60%;
+      background-color: var(--tri2-col);
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      align-items: flex-start;
+      gap: 1rem;
+      overflow: auto;
+
+      .task {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--secondary-col);
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+
+        h5 {
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          span {
+            font-size: 0.5rem;
+            background-color: red;
+            color: var(--primary-col);
+            padding: 0.2rem 0.4rem;
+            border-radius: 50%;
+
+            &.true {
+              display: block;
+            }
+
+            &.false {
+              display: none;
+            }
+          }
+        }
+
+        h1 {
+          font-size: 1.8rem;
+          text-align: center;
+          width: 100%;
+          color: var(--tri1-col);
+        }
+
+        button {
+          padding: 0.5rem 1rem;
+          background-color: green;
+          color: var(--secondary-col);
+          border-radius: 0.8rem;
+          outline: 0;
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+.daily-tasks-fp {
+  .day-planner {
+    background-color: var(--tri2-col);
+    margin-top: 2rem;
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-height: 80vh;
+    overflow-y: auto;
+    justify-content: space-between;
+  }
+  .day-planner-time {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 49%;
+
+    p {
+      position: absolute;
+      top: 6%;
+      left: 5%;
+    }
+    input {
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 1.7rem 2rem 0.7rem 1.2rem;
+      outline: none;
+      border: none;
+      border-radius: 0.5rem;
+      border-bottom: 1px solid var(--tri1-col);
+      background-color: var(--secondary-col);
+    }
+  }
+}
