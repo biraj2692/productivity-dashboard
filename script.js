@@ -15,7 +15,6 @@ function openfeature() {
     });
   });
 }
-openfeature();
 
 function todoList() {
   let formButton = document.querySelector(".add-tasks form");
@@ -71,8 +70,6 @@ function todoList() {
   renderTasks();
 }
 
-todoList();
-
 function dailyPlannerList() {
   let hourlyDayPlan = JSON.parse(localStorage.getItem("hourlyDayPlan")) || {};
   let dayPlanner = document.querySelector(".day-planner");
@@ -108,4 +105,91 @@ function dailyPlannerList() {
   });
 }
 
+function motivationQuoteContent() {
+  let quote = document.querySelector(".motivation-quote h1");
+  let author = document.querySelector(".motivation-author h2");
+  async function fetchQuote() {
+    let response = await fetch("https://dummyjson.com/quotes/random");
+    let data = await response.json();
+    console.log(data.quote);
+    console.log(data.author);
+    quote.innerHTML = data.quote;
+    author.innerHTML = "~ " + data.author;
+  }
+  fetchQuote();
+}
+
+function pomodoroTimer() {
+  let timer = document.querySelector(".pomo-timer h2");
+let start = document.querySelector(".pomo-timer .start");
+let pause = document.querySelector(".pomo-timer .pause");
+let reset = document.querySelector(".pomo-timer .reset");
+let period = document.querySelector(".pomo-timer h3")
+
+let timerInterval;
+let totalSeconds = 25 * 60;
+let isWorkSession = true;
+function updateTime() {
+  let mins = Math.floor(totalSeconds / 60);
+  let secs = totalSeconds % 60;
+  
+  timer.innerHTML = `${String(mins).padStart("2", 0)}:${String(secs).padStart("2",0)}`;
+}
+updateTime();
+
+function startTimer() {
+  clearInterval(timerInterval);
+
+  if (isWorkSession) {
+    totalSeconds = 25 * 60;
+    period.innerHTML = `Work Session`
+    timerInterval = setInterval(() => {
+      if (totalSeconds > 0) {
+        totalSeconds--;
+        updateTime();
+      }
+      else{
+        isWorkSession = false
+        clearInterval(timerInterval);
+        period.innerHTML = `Break Session`
+        timer.innerHTML = `05:00`;
+      }
+    }, 1);
+  }
+  else{
+    period.innerHTML = `Break Session`
+    totalSeconds = 5 * 60;
+    
+    timerInterval = setInterval(() => {
+      if (totalSeconds > 0) {
+        totalSeconds--;
+        updateTime();
+      }
+      else{
+        isWorkSession = true
+        clearInterval(timerInterval);
+        period.innerHTML = `Work Session`
+        timer.innerHTML = `25:00`;
+      }
+    }, 1);
+  }
+}
+function pauseTimer() {
+  clearInterval(timerInterval);
+}
+function resetTimer() {
+  clearInterval(timerInterval);
+  totalSeconds = 25 * 60;
+  updateTime();
+}
+
+start.addEventListener("click", startTimer);
+pause.addEventListener("click", pauseTimer);
+reset.addEventListener("click", resetTimer);
+}
+
+openfeature();
+motivationQuoteContent();
+todoList();
 dailyPlannerList();
+pomodoroTimer();

@@ -287,3 +287,114 @@ section.all-elems {
     }
   }
 }
+
+.motivation-fp {
+  width: 100%;
+  .motivation-parent-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .motivation-container {
+      height: 50vh;
+      width: 70vw;
+      position: relative;
+
+      .motivation-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 3rem;
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+        background-color: var(--tri2-col);
+        border-radius: 0.8em;
+        padding: 1rem;
+
+        img {
+          height: 100px;
+          width: 100px;
+          position: absolute;
+          top: 12%;
+          right: 2%;
+          opacity: 0.3;
+        }
+        .motivation-head,
+        .motivation-author {
+          background-color: var(--primary-col);
+          border-radius: 0.5rem;
+          padding: 1rem;
+          h2 {
+            color: var(--secondary-col);
+            font-weight: 500;
+            font-size: 2rem;
+            text-align: left;
+          }
+        }
+        .motivation-quote {
+          padding: 1rem;
+          h1 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-align: center;
+          }
+        }
+        .motivation-author {
+          h2 {
+            text-align: right;
+          }
+        }
+      }
+    }
+    .motivation-container::after {
+      content: "";
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      background: var(--tri1-col);
+      border-radius: 1em;
+      scale: 1.2;
+      z-index: 8;
+      filter: blur(180px);
+    }
+  }
+}
+
+.pomodoro-timer-fp{
+   position: relative;
+  
+
+  .pomo-timer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    h2{
+      font-size: 10rem;
+    }
+    h3{
+      font-size: 5rem;
+    }
+
+    button{
+      margin: 0 0.5rem;
+      background-color: var(--tri2-col);
+      padding: 1rem 1.5rem;
+      border: 0;
+      border-radius:0.5rem;
+      font-size: 1.2rem;
+      box-shadow: 8px 8px 0px black;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+    button:active{
+      box-shadow: 0px 0px 0px black;
+      scale: 0.9;
+      transition:all ease-in 0.2;
+
+    }
+  }
+}

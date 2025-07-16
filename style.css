@@ -260,4 +260,108 @@ section.all-elems {
   border-radius: 0.5rem;
   border-bottom: 1px solid var(--tri1-col);
   background-color: var(--secondary-col);
+}
+
+.motivation-fp {
+  width: 100%;
+}
+.motivation-fp .motivation-parent-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.motivation-fp .motivation-parent-container .motivation-container {
+  height: 50vh;
+  width: 70vw;
+  position: relative;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: var(--tri2-col);
+  border-radius: 0.8em;
+  padding: 1rem;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper img {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 12%;
+  right: 2%;
+  opacity: 0.3;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-head,
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-author {
+  background-color: var(--primary-col);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-head h2,
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-author h2 {
+  color: var(--secondary-col);
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-quote {
+  padding: 1rem;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-quote h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  text-align: center;
+}
+.motivation-fp .motivation-parent-container .motivation-container .motivation-wrapper .motivation-author h2 {
+  text-align: right;
+}
+.motivation-fp .motivation-parent-container .motivation-container::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: var(--tri1-col);
+  border-radius: 1em;
+  scale: 1.2;
+  z-index: 8;
+  filter: blur(180px);
+}
+
+.pomodoro-timer-fp {
+  position: relative;
+}
+.pomodoro-timer-fp .pomo-timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.pomodoro-timer-fp .pomo-timer h2 {
+  font-size: 10rem;
+}
+.pomodoro-timer-fp .pomo-timer h3 {
+  font-size: 5rem;
+}
+.pomodoro-timer-fp .pomo-timer button {
+  margin: 0 0.5rem;
+  background-color: var(--tri2-col);
+  padding: 1rem 1.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  box-shadow: 8px 8px 0px black;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+.pomodoro-timer-fp .pomo-timer button:active {
+  box-shadow: 0px 0px 0px black;
+  scale: 0.9;
+  transition: all ease-in 0.2;
 }/*# sourceMappingURL=style.css.map */
