@@ -186,66 +186,135 @@ function pomodoroTimer() {
   reset.addEventListener("click", resetTimer);
 }
 
-let headerTime = document.querySelector(".header1 h2");
-let headerDate = document.querySelector(".header1 h1");
-async function weatherFeature() {
-  let res = await fetch(
-    `https://api.weatherapi.com/v1/current.json?key=2929e7bf63564c5c9fe35412251707&q=Ahmedabad&aqi=no`
-  );
-  console.log(res);
-}
-let fullDate = null;
-function dateTime() {
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+function weatherDash() {
+  let headerTime = document.querySelector(".header1 h2");
+  let headerDate = document.querySelector(".header1 h1");
+  let header2 = document.querySelector(".header2 .temp-details");
+  let headerTemp = document.querySelector(".header2 .temperature");
+  let headerTempCelcius = document.querySelector(".header2 .celcius");
+  let headerTempfahrenheit = document.querySelector(".header2 .fahrenheit");
 
-  fullDate = new Date();
-  console.log(fullDate);
+  let fullDate = null;
 
-  let day = daysOfWeek[fullDate.getDay()];
-  let hours = fullDate.getHours();
-  let min = fullDate.getMinutes();
-  let sec = fullDate.getSeconds();
-  let month = monthNames[fullDate.getMonth()];
-  let year = fullDate.getFullYear();
-  let date = fullDate.getDate();
+  async function weatherFeature() {
+    let res = await fetch(
+      `https://api.weatherapi.com/v1/current.json?key=2929e7bf63564c5c9fe35412251707&q=Ahmedabad&aqi=no`
+    );
+    data = await res.json();
 
-  headerDate.innerHTML = `${date} ${month}, ${year}`;
-  if (hours > 12) {
-    headerTime.innerHTML = `${day}, ${hours - 12} : ${min} : ${sec} PM`;
-  } else {
-    headerTime.innerHTML = `${day}, ${hours} : ${min} : ${sec} AM`;
+    header2.innerHTML = `  
+            <h2>Humidity: ${data.current.humidity}%</h2>
+            <h2>Wind: ${data.current.wind_kph} km/h</h2>
+            <h2>${data.current.condition.text}</h2>
+            `;
+
+    headerTemp.innerHTML = `<h1>${data.current.temp_c} <span class="celcius">°C</span> |
+    <span class="fahrenheit">°F</span>
+  </h1>`;
+
+    headerTemp.addEventListener("click", (e) => {
+      if (e.target.classList.contains("celcius")) {
+        headerTemp.innerHTML = `<h1>${data.current.temp_c} <span class="celcius">°C</span> |
+        <span class="fahrenheit">°F</span>
+      </h1>`;
+      } else if (e.target.classList.contains("fahrenheit")) {
+        headerTemp.innerHTML = `<h1>${data.current.temp_f} <span class="celcius">°C</span> |
+        <span class="fahrenheit">°F</span>
+      </h1>`;
+      }
+    });
   }
+  weatherFeature();
+  function dateTime() {
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    fullDate = new Date();
+
+    let day = daysOfWeek[fullDate.getDay()];
+    let hours = fullDate.getHours();
+    let min = fullDate.getMinutes();
+    let sec = fullDate.getSeconds();
+    let month = monthNames[fullDate.getMonth()];
+    let year = fullDate.getFullYear();
+    let date = fullDate.getDate();
+
+    headerDate.innerHTML = `${date} ${month}, ${year}`;
+    if (hours > 12) {
+      headerTime.innerHTML = `${day}, ${hours - 12} : ${String(min).padStart(
+        "2",
+        0
+      )} : ${String(sec).padStart("2", 0)} PM`;
+    } else {
+      headerTime.innerHTML = `${day}, ${hours} : ${String(min).padStart(
+        "2",
+        0
+      )} : ${String(sec).padStart("2", 0)} AM`;
+    }
+  }
+
+  setInterval(() => {
+    dateTime();
+  }, 1000);
 }
 
-setInterval(() => {
-  dateTime();
-}, 1000);
+let root = document.documentElement
+let theme = document.querySelector("nav .theme")
+let flag = 0;
 
+theme.addEventListener('click', ()=>{
+  // --primary-col: #fcdec0;
+  // --secondary-col: #381c0a;
+  // --tri1-col: #feba17;
+  // --tri2-col: #74512d;
+
+  if (flag == 0) {
+    root.style.setProperty('--secondary-col', '#a8dadc')
+    root.style.setProperty('--primary-col', '#003566')
+    root.style.setProperty('--tri1-col', '#f1faee')
+    root.style.setProperty('--tri2-col', '#457b9d')
+    flag = 1;
+  } else if (flag == 1) {
+       root.style.setProperty('--secondary-col', '#381c0a')
+    root.style.setProperty('--primary-col', '#fcdec0')
+    root.style.setProperty('--tri1-col', '#74512d')
+    root.style.setProperty('--tri2-col', '#feba17')
+    flag = 2;
+  }
+  else{
+    root.style.setProperty('--secondary-col', '#fcdec0')
+    root.style.setProperty('--primary-col', '#381c0a')
+    root.style.setProperty('--tri1-col', '#feba17')
+    root.style.setProperty('--tri2-col', '#74512d')
+    flag = 0;
+  }
+
+})
 
 openfeature();
 motivationQuoteContent();
 todoList();
 dailyPlannerList();
 pomodoroTimer();
+weatherDash();

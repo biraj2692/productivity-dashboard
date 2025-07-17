@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
   --primary-col: #fcdec0;
   --secondary-col: #381c0a;
@@ -26,7 +33,8 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   color: var(--primary-col);
   font-family: aeonik;
 }
@@ -44,11 +52,40 @@ body {
 }
 
 nav {
-  position: fixed;
+  
   width: 100%;
   height: 60px;
-  background-color: var(--tri1-col);
+  background-color: var(--primary-col);
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  h1{ 
+    color: var(--secondary-col);
+  }
+  .theme{
+    color: var(--primary-col);
+    background-color: var(--tri2-col);
+    padding: 0.5rem 1rem ;
+    border-radius: 0.5rem;
+    outline: 0;
+    border: 0;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .theme:hover{
+    cursor: pointer;
+  }
 }
+
+
 
 section.all-elems {
   height: 100%;
@@ -56,8 +93,13 @@ section.all-elems {
   padding: 40px;
   background-color: var(--tri2-col);
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 
 
   header{
@@ -66,16 +108,26 @@ section.all-elems {
     border-radius: 2rem;
     background-color: var(--secondary-col);
     margin-bottom: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items:center;
-    justify-content: space-between;
+    -webkit-box-align:center;
+        -ms-flex-align:center;
+            align-items:center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding: 1rem 3rem;
 
-
     .header1{
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       gap: 1rem;
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
       h1, h3{
         font-weight: 500;
         font-size: 2rem;
@@ -85,19 +137,43 @@ section.all-elems {
       }
     }
     .header2{
-      h1{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      gap: 10px;
 
+      h1{
+        
         font-size: 3rem;
+      }
+      span:hover{
+        cursor: pointer;
+      }
+      .temp-details{
+        h2{
+          font-weight: 500;
+        }
       }
     }
   }
 
   .all-features {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 2rem;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
@@ -108,13 +184,16 @@ section.all-elems {
   height: 40vh;
   border-radius: 1rem;
   font-size: 1.3rem;
+  -webkit-transition: all ease-in 0.2;
+  -o-transition: all ease-in 0.2;
   transition: all ease-in 0.2;
   cursor: pointer;
 
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 
   h2 {
@@ -168,8 +247,12 @@ section.all-elems {
     height: 70vh;
     width: 100%;
     margin-top: 3rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     gap: 1rem;
 
     .add-tasks {
@@ -179,10 +262,17 @@ section.all-elems {
       border-radius: 1rem;
 
       form {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         padding: 2rem;
-        align-items: flex-start;
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
         gap: 2rem;
 
         input,
@@ -199,6 +289,8 @@ section.all-elems {
         button {
           font-weight: 500;
           background-color: var(--tri1-col);
+          -webkit-transition: all ease-in 0.2;
+          -o-transition: all ease-in 0.2;
           transition: all ease-in 0.2;
 
           &:active {
@@ -206,13 +298,21 @@ section.all-elems {
           }
         }
         .mark-as-imp {
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
-          justify-content: flex-start;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-box-pack: start;
+              -ms-flex-pack: start;
+                  justify-content: flex-start;
           width: 100%;
           gap: 2rem;
 
           #checkbox {
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
             width: fit-content;
             scale: 2;
           }
@@ -229,26 +329,43 @@ section.all-elems {
       width: 60%;
       background-color: var(--tri2-col);
       border-radius: 1rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      flex-direction: column;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
       padding: 2rem;
-      align-items: flex-start;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
       gap: 1rem;
       overflow: auto;
 
       .task {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         background-color: var(--secondary-col);
         padding: 1rem 2rem;
         border-radius: 1rem;
 
         h5 {
           font-size: 1.5rem;
+          display: -webkit-box;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
           gap: 0.5rem;
 
           span {
@@ -294,18 +411,29 @@ section.all-elems {
     margin-top: 2rem;
     width: 100%;
     padding: 1rem 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     gap: 1rem;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     max-height: 80vh;
     overflow-y: auto;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .day-planner-time {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 49%;
 
     p {
@@ -331,18 +459,31 @@ section.all-elems {
   .motivation-parent-container {
     height: 100%;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     .motivation-container {
       height: 50vh;
       width: 70vw;
       position: relative;
 
       .motivation-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         gap: 3rem;
         width: 100%;
         position: absolute;
@@ -395,7 +536,8 @@ section.all-elems {
       border-radius: 1em;
       scale: 1.2;
       z-index: 8;
-      filter: blur(180px);
+      -webkit-filter: blur(180px);
+              filter: blur(180px);
     }
   }
 }
@@ -407,7 +549,9 @@ section.all-elems {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     text-align: center;
     h2 {
       font-size: 10rem;
@@ -423,13 +567,17 @@ section.all-elems {
       border: 0;
       border-radius: 0.5rem;
       font-size: 1.2rem;
-      box-shadow: 8px 8px 0px black;
+      -webkit-box-shadow: 8px 8px 0px black;
+              box-shadow: 8px 8px 0px black;
       font-weight: 600;
       letter-spacing: 3px;
     }
     button:active {
-      box-shadow: 0px 0px 0px black;
+      -webkit-box-shadow: 0px 0px 0px black;
+              box-shadow: 0px 0px 0px black;
       scale: 0.9;
+      -webkit-transition: all ease-in 0.2;
+      -o-transition: all ease-in 0.2;
       transition: all ease-in 0.2;
     }
   }
