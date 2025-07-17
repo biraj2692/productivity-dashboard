@@ -111,8 +111,6 @@ function motivationQuoteContent() {
   async function fetchQuote() {
     let response = await fetch("https://dummyjson.com/quotes/random");
     let data = await response.json();
-    console.log(data.quote);
-    console.log(data.author);
     quote.innerHTML = data.quote;
     author.innerHTML = "~ " + data.author;
   }
@@ -121,72 +119,130 @@ function motivationQuoteContent() {
 
 function pomodoroTimer() {
   let timer = document.querySelector(".pomo-timer h2");
-let start = document.querySelector(".pomo-timer .start");
-let pause = document.querySelector(".pomo-timer .pause");
-let reset = document.querySelector(".pomo-timer .reset");
-let period = document.querySelector(".pomo-timer h3")
+  let start = document.querySelector(".pomo-timer .start");
+  let pause = document.querySelector(".pomo-timer .pause");
+  let reset = document.querySelector(".pomo-timer .reset");
+  let period = document.querySelector(".pomo-timer h3");
 
-let timerInterval;
-let totalSeconds = 25 * 60;
-let isWorkSession = true;
-function updateTime() {
-  let mins = Math.floor(totalSeconds / 60);
-  let secs = totalSeconds % 60;
-  
-  timer.innerHTML = `${String(mins).padStart("2", 0)}:${String(secs).padStart("2",0)}`;
-}
-updateTime();
+  let timerInterval;
+  let totalSeconds = 25 * 60;
+  let isWorkSession = true;
+  function updateTime() {
+    let mins = Math.floor(totalSeconds / 60);
+    let secs = totalSeconds % 60;
 
-function startTimer() {
-  clearInterval(timerInterval);
-
-  if (isWorkSession) {
-    totalSeconds = 25 * 60;
-    period.innerHTML = `Work Session`
-    timerInterval = setInterval(() => {
-      if (totalSeconds > 0) {
-        totalSeconds--;
-        updateTime();
-      }
-      else{
-        isWorkSession = false
-        clearInterval(timerInterval);
-        period.innerHTML = `Break Session`
-        timer.innerHTML = `05:00`;
-      }
-    }, 1);
+    timer.innerHTML = `${String(mins).padStart("2", 0)}:${String(secs).padStart(
+      "2",
+      0
+    )}`;
   }
-  else{
-    period.innerHTML = `Break Session`
-    totalSeconds = 5 * 60;
-    
-    timerInterval = setInterval(() => {
-      if (totalSeconds > 0) {
-        totalSeconds--;
-        updateTime();
-      }
-      else{
-        isWorkSession = true
-        clearInterval(timerInterval);
-        period.innerHTML = `Work Session`
-        timer.innerHTML = `25:00`;
-      }
-    }, 1);
-  }
-}
-function pauseTimer() {
-  clearInterval(timerInterval);
-}
-function resetTimer() {
-  clearInterval(timerInterval);
-  totalSeconds = 25 * 60;
   updateTime();
+
+  function startTimer() {
+    clearInterval(timerInterval);
+
+    if (isWorkSession) {
+      totalSeconds = 25 * 60;
+      period.innerHTML = `Work Session`;
+      timerInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          updateTime();
+        } else {
+          isWorkSession = false;
+          clearInterval(timerInterval);
+          period.innerHTML = `Break Session`;
+          timer.innerHTML = `05:00`;
+        }
+      }, 1);
+    } else {
+      period.innerHTML = `Break Session`;
+      totalSeconds = 5 * 60;
+
+      timerInterval = setInterval(() => {
+        if (totalSeconds > 0) {
+          totalSeconds--;
+          updateTime();
+        } else {
+          isWorkSession = true;
+          clearInterval(timerInterval);
+          period.innerHTML = `Work Session`;
+          timer.innerHTML = `25:00`;
+        }
+      }, 1);
+    }
+  }
+  function pauseTimer() {
+    clearInterval(timerInterval);
+  }
+  function resetTimer() {
+    clearInterval(timerInterval);
+    totalSeconds = 25 * 60;
+    updateTime();
+  }
+
+  start.addEventListener("click", startTimer);
+  pause.addEventListener("click", pauseTimer);
+  reset.addEventListener("click", resetTimer);
 }
 
-start.addEventListener("click", startTimer);
-pause.addEventListener("click", pauseTimer);
-reset.addEventListener("click", resetTimer);
+let headerTime = document.querySelector(".header1 h2");
+let headerDate = document.querySelector(".header1 h1");
+async function weatherFeature() {
+  let res = await fetch(
+    `https://api.weatherapi.com/v1/current.json?key=2929e7bf63564c5c9fe35412251707&q=Ahmedabad&aqi=no`
+  );
+  console.log(res);
 }
+let fullDate = null;
+function dateTime() {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  fullDate = new Date();
+  console.log(fullDate);
+
+  let day = daysOfWeek[fullDate.getDay()];
+  let hours = fullDate.getHours();
+  let min = fullDate.getMinutes();
+  let sec = fullDate.getSeconds();
+  let month = monthNames[fullDate.getMonth()];
+  let year = fullDate.getFullYear();
+  let date = fullDate.getDate();
+
+  headerDate.innerHTML = `${date} ${month}, ${year}`;
+  if (hours > 12) {
+    headerTime.innerHTML = `${day}, ${hours - 12} : ${min} : ${sec} PM`;
+  } else {
+    headerTime.innerHTML = `${day}, ${hours} : ${min} : ${sec} AM`;
+  }
+}
+
+setInterval(() => {
+  dateTime();
+}, 1000);
+
 
 openfeature();
 motivationQuoteContent();
