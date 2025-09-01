@@ -60,5 +60,3 @@ To run this project locally, follow these steps:
 3.  **Habit Tracker:**
     *   Add habits you want to track daily.
     *   Click on a day's circle for a habit to mark it as complete and build your streak.
-
-## 📁 Project Structure
