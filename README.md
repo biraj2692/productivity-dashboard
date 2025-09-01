@@ -2,23 +2,17 @@
 
 A clean, modern, and interactive dashboard designed to help users track their productivity, manage tasks, and visualize their workflow metrics.
 
-![Dashboard Preview](https://via.placeholder.com/800x400.png?text=Productivity+Dashboard+Preview) 
-*Replace this placeholder with an actual screenshot of your project.*
-
 ## ✨ Features
 
 -   **Task Management:** Add, edit, delete, and mark tasks as complete.
 -   **Pomodoro Timer:** A built-in timer to help you practice the Pomodoro technique for focused work sessions.
 -   **Habit Tracker:** Visually track your daily habits and build streaks.
--   **Focus Time Analytics:** Charts and graphs (e.g., using Chart.js) to visualize your productivity over time.
--   **Customizable Widgets:** Arrange and resize widgets to fit your personal workflow.
 -   **Local Storage:** Your data is persisted in your browser's local storage, so it remains until you clear it.
 -   **Responsive Design:** Works seamlessly on desktop, tablet, and mobile devices.
 
 ## 🚀 Live Demo
 
-Check out the live application here: [https://your-deployed-app-link.vercel.app](https://your-deployed-app-link.vercel.app)
-*Replace with your actual deployment link (e.g., Vercel, Netlify, GitHub Pages).*
+Check out the live application here: https://biraj2692.github.io/productivity-dashboard/
 
 ## 🛠️ Tech Stack
 
